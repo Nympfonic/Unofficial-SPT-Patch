@@ -2,7 +2,6 @@
 using EFT;
 using EFT.UI;
 using HarmonyLib;
-using System;
 using System.Reflection;
 
 namespace SPTBugfixes.Patches
