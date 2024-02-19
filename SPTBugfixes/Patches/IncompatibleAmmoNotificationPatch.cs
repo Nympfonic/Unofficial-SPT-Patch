@@ -15,17 +15,9 @@ namespace SPTBugfixes.Patches
         protected override MethodBase GetTargetMethod()
         {
             var targetMethodName = "ShowUncompatibleNotification";
-            try
-            {
-                var targetType = AccessTools.FirstInner(typeof(Player), t => t.GetMethod(targetMethodName) != null);
+            var targetType = AccessTools.FirstInner(typeof(Player.FirearmController), t => t.GetMethod(targetMethodName) != null);
 
-                return AccessTools.DeclaredMethod(targetType, targetMethodName);
-            }
-            catch (Exception ex)
-            {
-                Plugin.ModLogger.LogError($"Could not find target type with method name: {targetMethodName}. {ex}");
-                throw;
-            }
+            return AccessTools.Method(targetType, targetMethodName);
         }
 
         [PatchPrefix]
@@ -33,7 +25,9 @@ namespace SPTBugfixes.Patches
         {
             if (___player_0.IsAI)
             {
+#if DEBUG
                 ConsoleScreen.LogWarning($"Bot Id {___player_0.PlayerId} attempted to fire a gun with incompatible ammo loaded");
+#endif
                 return false;
             }
 
