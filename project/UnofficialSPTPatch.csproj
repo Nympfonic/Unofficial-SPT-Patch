@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
-    <AssemblyName>Arys-SPTBugfixes</AssemblyName>
+    <AssemblyName>Arys-UnofficialSPTPatch</AssemblyName>
     <Description>Miscellaneous bugfixes for SPT</Description>
     <Version>1.0.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
