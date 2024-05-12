@@ -2,9 +2,10 @@
 using EFT;
 using EFT.UI;
 using HarmonyLib;
+using System;
 using System.Reflection;
 
-namespace SPTBugfixes.Patches
+namespace Arys.USPTP.Patches
 {
     /// <summary>
     /// Prevents a bot with incompatible ammo in its gun from sending the notification to the player's screen.
@@ -13,8 +14,8 @@ namespace SPTBugfixes.Patches
     {
         protected override MethodBase GetTargetMethod()
         {
-            var targetMethodName = "ShowUncompatibleNotification";
-            var targetType = AccessTools.FirstInner(typeof(Player.FirearmController), t => t.GetMethod(targetMethodName) != null);
+            string targetMethodName = "ShowUncompatibleNotification";
+            Type targetType = AccessTools.FirstInner(typeof(Player.FirearmController), t => t.GetMethod(targetMethodName) != null);
 
             return AccessTools.Method(targetType, targetMethodName);
         }
@@ -25,7 +26,9 @@ namespace SPTBugfixes.Patches
             if (___player_0.IsAI)
             {
 #if DEBUG
-                ConsoleScreen.LogWarning($"Bot Id {___player_0.PlayerId} attempted to fire a gun with incompatible ammo loaded");
+                string warning = $"Bot Id: {___player_0.PlayerId}, Name: {___player_0.Profile.Nickname} attempted to fire a gun with incompatible ammo loaded";
+                ConsoleScreen.LogWarning(warning);
+                USPTPPlugin.LogSource.LogWarning(warning);
 #endif
                 return false;
             }

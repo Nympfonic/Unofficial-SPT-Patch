@@ -31,10 +31,10 @@
       <HintPath>References\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Aki.Reflection">
-      <HintPath>References\Aki.Reflection.dll</HintPath>
+      <HintPath>..\References\Aki.Reflection.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>References\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\References\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx">
       <HintPath>References\BepInEx.dll</HintPath>

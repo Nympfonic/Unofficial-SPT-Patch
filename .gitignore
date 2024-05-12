@@ -397,5 +397,4 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 /global.json
-/SPTBugfixes/References/Assembly-CSharp.dll
-/SPTBugfixes/References
+/References
