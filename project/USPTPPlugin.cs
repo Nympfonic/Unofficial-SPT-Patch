@@ -2,6 +2,7 @@
 
 using Aki.Reflection.Patching;
 using Arys.USPTP.Patches;
+using Arys.USPTP.Patches.Windows;
 using BepInEx;
 using BepInEx.Logging;
 using System.Collections.Generic;
@@ -15,7 +16,11 @@ namespace Arys.USPTP
         internal static ManualLogSource LogSource;
 
         private static readonly List<ModulePatch> _patches = [
-            new IncompatibleAmmoNotificationPatch()
+            new IncompatibleAmmoNotificationPatch(),
+            new WindowBreakingConfigPatches.StaticMethod3(),
+            new WindowBreakingConfigPatches.StaticMethod4(),
+            new WindowBreakingConfigPatches.StaticMethod7(),
+            new WindowBreakingConfigPatches.GClassGetMesh(),
         ];
 
         private void Awake()
