@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
+    <TargetFramework>net471</TargetFramework>
     <AssemblyName>Arys-UnofficialSPTPatch</AssemblyName>
-    <Description>Miscellaneous bugfixes for SPT</Description>
     <Version>1.0.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
+    <BaseOutputPath>build</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,19 +28,28 @@
   
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>References\0Harmony.dll</HintPath>
+      <HintPath>..\..\SPT Assembly Refs\38x\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Aki.Reflection">
-      <HintPath>..\References\Aki.Reflection.dll</HintPath>
+      <HintPath>..\..\SPT Assembly Refs\38x\Aki.Reflection.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\References\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\SPT Assembly Refs\38x\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx">
-      <HintPath>References\BepInEx.dll</HintPath>
+      <HintPath>..\..\SPT Assembly Refs\38x\BepInEx.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
-      <HintPath>References\Mono.Cecil.dll</HintPath>
+      <HintPath>..\..\SPT Assembly Refs\38x\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="UniTask">
+      <HintPath>..\References\UniTask.dll</HintPath>
+    </Reference>
+    <Reference Include="UniTask.Linq">
+      <HintPath>..\References\UniTask.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Collections">
+      <HintPath>..\References\Unity.Collections.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

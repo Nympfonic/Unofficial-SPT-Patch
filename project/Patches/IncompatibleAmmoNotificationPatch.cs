@@ -12,28 +12,29 @@ namespace Arys.USPTP.Patches
     /// </summary>
     internal class IncompatibleAmmoNotificationPatch : ModulePatch
     {
+        private const string _targetMethodName = "ShowUncompatibleNotification";
+
         protected override MethodBase GetTargetMethod()
         {
-            string targetMethodName = "ShowUncompatibleNotification";
-            Type targetType = AccessTools.FirstInner(typeof(Player.FirearmController), t => t.GetMethod(targetMethodName) != null);
+            Type targetType = AccessTools.FirstInner(typeof(Player.FirearmController), t => t.GetMethod(_targetMethodName) != null);
 
-            return AccessTools.Method(targetType, targetMethodName);
+            return AccessTools.Method(targetType, _targetMethodName);
         }
 
         [PatchPrefix]
         private static bool PatchPrefix(Player ___player_0)
         {
-            if (___player_0.IsAI)
+            if (___player_0.IsYourPlayer)
             {
-#if DEBUG
-                string warning = $"Bot Id: {___player_0.PlayerId}, Name: {___player_0.Profile.Nickname} attempted to fire a gun with incompatible ammo loaded";
-                ConsoleScreen.LogWarning(warning);
-                USPTPPlugin.LogSource.LogWarning(warning);
-#endif
-                return false;
-            }
+                return true;
+            }            
 
-            return true;
+#if DEBUG
+            string warning = $"Bot Id: {___player_0.PlayerId}, Name: {___player_0.Profile.Nickname} attempted to fire a gun with incompatible ammo loaded";
+            ConsoleScreen.LogWarning(warning);
+            USPTPPlugin.LogSource.LogWarning(warning);
+#endif
+            return false;
         }
     }
 }
