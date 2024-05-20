@@ -2,6 +2,7 @@
 
 using Aki.Reflection.Patching;
 using Arys.USPTP.Patches;
+using Arys.USPTP.Patches.NullGuardPatches;
 using Arys.USPTP.Patches.Windows;
 using BepInEx;
 using BepInEx.Logging;
@@ -21,6 +22,11 @@ namespace Arys.USPTP
             new WindowBreakingConfigPatches.StaticMethod4(),
             new WindowBreakingConfigPatches.StaticMethod7(),
             new WindowBreakingConfigPatches.GClassGetMesh(),
+
+            //null ref patches
+            new CoverPointMasterGetClosePoints(),
+            new PerfectCullingBakeGroupToggle(),
+            new ShootDataMethod0Patch(),
         ];
 
         private void Awake()
