@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
-using Aki.Reflection.Patching;
+﻿using Aki.Reflection.Patching;
 using EFT;
 using HarmonyLib;
-using UnityEngine;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace Arys.USPTP.Patches.NullGuardPatches;
-internal class CoverPointMasterGetClosePoints : ModulePatch
+
+internal class CoverPointMasterGetClosePointsPatch : ModulePatch
 {
     protected override MethodBase GetTargetMethod()
     {
@@ -15,7 +15,7 @@ internal class CoverPointMasterGetClosePoints : ModulePatch
     }
 
     [PatchPrefix]
-    public static bool Prefix(Vector3 pos, BotOwner bot, float dist, ref List<CustomNavigationPoint> __result)
+    public static bool Prefix(BotOwner bot, ref List<CustomNavigationPoint> __result)
     {
         if (bot == null || bot.Covers == null)
         {

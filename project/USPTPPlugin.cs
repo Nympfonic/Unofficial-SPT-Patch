@@ -18,14 +18,15 @@ namespace Arys.USPTP
 
         private static readonly List<ModulePatch> _patches = [
             new IncompatibleAmmoNotificationPatch(),
+            // Experimental patches
             new WindowBreakingConfigPatches.StaticMethod3(),
             new WindowBreakingConfigPatches.StaticMethod4(),
             new WindowBreakingConfigPatches.StaticMethod7(),
             new WindowBreakingConfigPatches.GClassGetMesh(),
 
-            //null ref patches
-            new CoverPointMasterGetClosePoints(),
-            new PerfectCullingBakeGroupToggle(),
+            // Null Guard patches
+            new CoverPointMasterGetClosePointsPatch(),
+            new PerfectCullingBakeGroupTogglePatch(),
             new ShootDataMethod0Patch(),
         ];
 

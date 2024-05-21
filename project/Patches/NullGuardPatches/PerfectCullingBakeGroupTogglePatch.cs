@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Aki.Reflection.Patching;
+﻿using Aki.Reflection.Patching;
 using Koenigz.PerfectCulling;
+using System.Reflection;
 
 namespace Arys.USPTP.Patches.NullGuardPatches;
 
 //Stops issue where game freezes if a gameobject is missing (such as deleting a door)
-internal class PerfectCullingBakeGroupToggle : ModulePatch
+internal class PerfectCullingBakeGroupTogglePatch : ModulePatch
 {
     protected override MethodBase GetTargetMethod() => typeof(PerfectCullingBakeGroup).GetMethod(nameof(PerfectCullingBakeGroup.Toggle));
 
